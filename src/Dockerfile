@@ -5,7 +5,8 @@ COPY Pipfile Pipfile
 COPY Pipfile.lock Pipfile.lock
 RUN apk add --no-cache --virtual .build-deps \
     build-base \
-    ca-certificates
+    ca-certificates \
+    curl
 RUN pipenv install --system
 COPY main.py .
 CMD ["uvicorn", "main:app", "--host", "0.0.0.0"]
